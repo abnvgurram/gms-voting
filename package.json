@@ -1,0 +1,22 @@
+{
+  "name": "school-voting",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "sass": "latest",
+    "sass-embedded": "^1.100.0",
+    "vite": "latest"
+  },
+  "description": "React JSX and SCSS placeholder website"
+}
