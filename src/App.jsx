@@ -232,20 +232,15 @@ function App() {
 
   return (
     <main className={`app app--${routeName}`}>
-      <section className={`hero ${votingIsPaused ? 'hero--with-status' : ''}`}>
-        <div className="hero__content">
-          <p className="eyebrow">Gowtham Model School</p>
-          <h1>{routeConfig ? routeConfig.label : 'Leadership Voting'}</h1>
-          {!routeConfig && <p>Open /boy or /girl from the address bar.</p>}
-        </div>
-
-        {votingIsPaused && (
-          <div className="status-card status-card--paused">
-            <span>Voting Status</span>
-            <strong>Paused</strong>
+      {!routeConfig && (
+        <section className="hero">
+          <div className="hero__content">
+            <p className="eyebrow">Gowtham Model School</p>
+            <h1>Leadership Voting</h1>
+            <p>Open /boy or /girl from the address bar.</p>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {routeConfig ? (
         <RouteVoting
