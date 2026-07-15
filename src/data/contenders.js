@@ -7,7 +7,7 @@ export const positions = [
         id: 'head-boy-a',
         name: 'Laxmi Narayan Raj',
         symbol: 'Sun',
-        symbolImage: '/symbols/sun.svg',
+        symbolImage: '/symbols/sun.png',
         photo: '/contenders/head-boy-a.svg',
         accent: '#167c68',
       },
@@ -35,7 +35,7 @@ export const positions = [
       },
       {
         id: 'head-girl-b',
-        name: 'Bushla Zaheen',
+        name: 'Bushra Zaheen',
         symbol: 'Lamp',
         symbolImage: '/symbols/lamp.svg',
         photo: '/contenders/head-girl-b.svg',

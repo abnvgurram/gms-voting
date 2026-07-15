@@ -17,6 +17,47 @@ const routes = {
   },
 };
 
+const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'svg'];
+
+function createImageSources(source) {
+  if (!source) return [];
+
+  const queryIndex = source.indexOf('?');
+  const cleanSource = queryIndex === -1 ? source : source.slice(0, queryIndex);
+  const dotIndex = cleanSource.lastIndexOf('.');
+  const slashIndex = cleanSource.lastIndexOf('/');
+  const hasExtension = dotIndex > slashIndex;
+  const basePath = hasExtension ? cleanSource.slice(0, dotIndex) : cleanSource;
+  const query = queryIndex === -1 ? '' : source.slice(queryIndex);
+  const sources = IMAGE_EXTENSIONS.map((extension) => `${basePath}.${extension}${query}`);
+
+  if (!sources.includes(source)) {
+    sources.push(source);
+  }
+
+  return sources;
+}
+
+function FlexibleImage({ source, alt, className }) {
+  const sources = useMemo(() => createImageSources(source), [source]);
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  useEffect(() => {
+    setSourceIndex(0);
+  }, [source]);
+
+  if (!sources.length || sourceIndex >= sources.length) return null;
+
+  return (
+    <img
+      className={className}
+      src={sources[sourceIndex]}
+      alt={alt}
+      onError={() => setSourceIndex((currentIndex) => currentIndex + 1)}
+    />
+  );
+}
+
 function createEmptyVotes() {
   return positions.reduce((positionVotes, position) => {
     positionVotes[position.id] = position.candidates.reduce((candidateVotes, candidate) => {
@@ -350,21 +391,18 @@ function RouteVoting({
               key={candidate.id}
               style={{ '--accent': candidate.accent }}
             >
-              <img
+              <FlexibleImage
                 className="stage-candidate__photo"
-                src={candidate.photo}
-                alt={`${candidate.name} demo portrait`}
+                source={candidate.photo}
+                alt={`${candidate.name} portrait`}
               />
               <div className="symbol-block">
                 <span>Symbol</span>
                 {candidate.symbolImage && (
-                  <img
+                  <FlexibleImage
                     className="symbol-block__image"
-                    src={candidate.symbolImage}
+                    source={candidate.symbolImage}
                     alt={`${candidate.symbol} symbol`}
-                    onError={(event) => {
-                      event.currentTarget.style.display = 'none';
-                    }}
                   />
                 )}
                 <strong>{candidate.symbol}</strong>

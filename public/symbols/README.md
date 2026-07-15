@@ -1,6 +1,6 @@
 Drop real election symbol images in this folder.
 
-For the easiest replacement, keep these filenames:
+Use these exact base filenames. PNG, JPG, JPEG, and SVG are supported automatically.
 
 - sun
 - moon
@@ -11,4 +11,10 @@ For the easiest replacement, keep these filenames:
 - flower
 - leaf
 
-If the symbols are JPG or PNG instead of SVG, update the matching `symbolImage` path in `src/data/contenders.js`.
+Examples that work without code changes:
+
+- sun.png
+- sun.jpg
+- sun.jpeg
+
+Do not put symbol images in `src`. Put them here in `public/symbols`.
