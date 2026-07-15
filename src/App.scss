@@ -226,9 +226,10 @@ h3 {
 }
 
 .stage-candidate__photo {
-  width: 100%;
-  height: 310px;
-  object-fit: cover;
+  width: min(100%, 360px);
+  aspect-ratio: 3 / 4;
+  justify-self: center;
+  object-fit: contain;
   background: #edf2f4;
   border-radius: 8px;
 }
@@ -517,7 +518,7 @@ h3 {
   }
 
   .stage-candidate__photo {
-    height: 390px;
+    width: min(100%, 420px);
   }
 }
 
@@ -558,10 +559,6 @@ h3 {
     min-height: auto;
   }
 
-  .stage-candidate__photo {
-    height: 260px;
-  }
-
   .stage-candidate__name {
     min-height: 104px;
   }
@@ -576,10 +573,6 @@ h3 {
   .admin-actions,
   .pin-row {
     grid-template-columns: 1fr;
-  }
-
-  .stage-candidate__photo {
-    height: 220px;
   }
 
   .symbol-block {
