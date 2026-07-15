@@ -75,9 +75,7 @@ button {
   padding: 30px;
   display: grid;
   align-content: end;
-  background:
-    linear-gradient(rgba(15, 31, 37, 0.74), rgba(15, 31, 37, 0.74)),
-    url('/contenders/demo-banner.svg') center/cover;
+  background: linear-gradient(135deg, #13282f, #203a43);
   color: #ffffff;
 }
 
